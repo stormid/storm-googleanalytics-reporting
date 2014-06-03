@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0"?>
 <package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <metadata>
-    <id>Storm Google Analytics Reporting</id>
+    <id>$id$</id>
+    <title>Storm Fluent Google Analytics v3 API Interface</title>
     <version>$version$</version>
     <authors>Phil Oyston</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>

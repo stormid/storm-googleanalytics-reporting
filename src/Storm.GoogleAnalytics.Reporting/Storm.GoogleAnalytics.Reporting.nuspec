@@ -1,0 +1,17 @@
+﻿<?xml version="1.0"?>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <authors>Phil Oyston, Google</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>http://www.github.com/stormid</projectUrl>
+    <summary>Provides a fluent interface to the GA v3 reporting API</summary>
+    <description>Provides a fluent interface to the GA v3 reporting API (see https://developers.google.com/analytics/devguides/reporting/core/v3/)</description>
+    <language>en-GB</language>
+    <copyright>Phil Oyston, Storm ID Ltd.</copyright>
+    <tags></tags>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+    <iconUrl>http://stormid.com/media/48267/logo.jpg</iconUrl>
+  </metadata>
+</package>

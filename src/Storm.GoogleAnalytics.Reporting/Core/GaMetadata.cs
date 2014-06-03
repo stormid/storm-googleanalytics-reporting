@@ -21,7 +21,7 @@
 
         public static class FilterOperator
         {
-            public static string Equals = "==";
+            public static string IsEqual = "==";
             public static string NotEquals = "!=";
             public static string GreaterThan = ">";
             public static string LessThan = "<";

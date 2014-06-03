@@ -2,10 +2,11 @@
 <package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <metadata>
     <id>$id$</id>
+    <title>Storm Fluent Google Analytics v3 API Interface</title>
     <version>$version$</version>
-    <authors>Phil Oyston, Google</authors>
+    <authors>Phil Oyston</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <projectUrl>http://www.github.com/stormid</projectUrl>
+    <projectUrl>http://stormid.github.io/storm-googleanalytics-reporting/</projectUrl>
     <summary>Provides a fluent interface to the GA v3 reporting API</summary>
     <description>Provides a fluent interface to the GA v3 reporting API (see https://developers.google.com/analytics/devguides/reporting/core/v3/)</description>
     <language>en-GB</language>

@@ -132,7 +132,7 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
-    <None Include="Storm.Analytics.Google.nuspec" />
+    <None Include="Storm.GoogleAnalytics.Reporting.nuspec" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="readme.txt" />

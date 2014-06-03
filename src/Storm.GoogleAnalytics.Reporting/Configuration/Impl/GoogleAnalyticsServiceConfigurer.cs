@@ -68,13 +68,13 @@ namespace Storm.GoogleAnalytics.Reporting.Configuration.Impl
         
         public IGoogleAnalyticsServiceConfigurer WithServiceAccountCertificate(X509Certificate2 certificate)
         {
-            if (certificate.Verify() && certificate.HasPrivateKey)
+            if (certificate != null && certificate.HasPrivateKey)
             {
                 ServiceAccountCertificate = certificate;
             }
             else
             {
-                throw new ApplicationException("Unable to verify certificate");
+                throw new ApplicationException("Unable to verify certificate has a private key");
             }
             return this;
         }

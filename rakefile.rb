@@ -18,7 +18,7 @@ MSBUILD_PATH = File.join(ENV['WINDIR'], 'Microsoft.NET', 'Framework',  'v4.0.303
 task :default => ['debug']
 
 namespace :albacore do
-	msbuild :msbuild => [:global_version, :prepare_directories] do |msb|
+	msbuild :msbuild => [:global_version, :prepare_directories, 'bundler:update'] do |msb|
 			msb.targets [:clean, :build]
 			msb.properties = {
 					:configuration => BUILD_TARGET
@@ -67,6 +67,13 @@ namespace :albacore do
 		asm.copyright = "Copyright 2009-2014 StormId. All rights reserved."
 		asm.output_file = 'CommonAssemblyInfo.cs'
 		asm.namespaces "System", "System.Reflection", "System.Runtime.InteropServices", "System.Security"
+	end
+end
+
+namespace :bundler do
+	desc "Bundle Update"
+	task :update do
+		system "bundle update"
 	end
 end
 

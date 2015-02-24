@@ -146,8 +146,9 @@ namespace Storm.GoogleAnalytics.Reporting.Impl
                 case "double":
                     return typeof(double);
                 case "currency":
+                    return typeof (decimal);
                 case "time":
-                    return typeof(decimal);
+                    return typeof(float);
                 default:
                     if (gaColumn.Name.ToLowerInvariant().Equals(GaMetadata.WithPrefix(GaMetadata.Dimensions.Time.Date)))
                     {

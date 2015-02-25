@@ -153,6 +153,7 @@
                 public static string Visits = "visits";
                 public static string Bounces = "bounces";
                 public static string TimeOnSite = "timeOnSite";
+                public static string AvgTimeOnSite = "avgTimeOnSite";
             }
 
             public static class PageTracking

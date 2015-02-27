@@ -83,7 +83,7 @@ namespace Storm.GoogleAnalytics.Reporting.Configuration.Impl
         {
             if (!string.IsNullOrWhiteSpace(keyFile) && File.Exists(keyFile))
             {
-                WithServiceAccountCertificate(new X509Certificate2(keyFile, password, X509KeyStorageFlags.Exportable));
+                WithServiceAccountCertificate(new X509Certificate2(keyFile, password, X509KeyStorageFlags.Exportable | X509KeyStorageFlags.MachineKeySet));
             }
             else
             {

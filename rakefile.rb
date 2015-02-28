@@ -18,7 +18,7 @@ MSBUILD_PATH = File.join(ENV['WINDIR'], 'Microsoft.NET', 'Framework',  'v4.0.303
 task :default => ['debug']
 
 namespace :albacore do
-	msbuild :msbuild => [:global_version, :prepare_directories, 'bundler:update'] do |msb|
+	msbuild :msbuild => [:prepare_directories, 'bundler:update'] do |msb|
 			msb.targets [:clean, :build]
 			msb.properties = {
 					:configuration => BUILD_TARGET
@@ -45,29 +45,29 @@ namespace :albacore do
 		end
 	end
 	
-	assemblyinfo :global_version do |asm|
-		commit_data = get_versions
-		commit = commit_data[0]
-		commit_date = commit_data[1]
-		tc_build_number = commit_data[2]
-		build_number = commit_data[3]
-		asm_version = commit_data[4]
-		
-		puts "Commit data: #{commit_data}"
-
-		puts "##teamcity[buildNumber '#{asm_version}']" unless tc_build_number.nil?
-		  
-		# Assembly file config
-		asm.product_name = PROJECT_NAME
-		asm.company_name = "Storm Id"
-		asm.description = "Git commit hash: #{commit} - #{commit_date}"
-		asm.version = build_number
-		asm.file_version = build_number
-		asm.custom_attributes :AssemblyInformationalVersion => "#{asm_version}", :ComVisibleAttribute => false
-		asm.copyright = "Copyright 2009-2014 StormId. All rights reserved."
-		asm.output_file = 'CommonAssemblyInfo.cs'
-		asm.namespaces "System", "System.Reflection", "System.Runtime.InteropServices", "System.Security"
-	end
+#	assemblyinfo :global_version do |asm|
+#		commit_data = get_versions
+#		commit = commit_data[0]
+#		commit_date = commit_data[1]
+#		tc_build_number = commit_data[2]
+#		build_number = commit_data[3]
+#		asm_version = commit_data[4]
+#		
+#		puts "Commit data: #{commit_data}"
+#
+#		puts "##teamcity[buildNumber '#{asm_version}']" unless tc_build_number.nil?
+#		  
+#		# Assembly file config
+#		asm.product_name = PROJECT_NAME
+#		asm.company_name = "Storm Id"
+#		asm.description = "Git commit hash: #{commit} - #{commit_date}"
+#		asm.version = build_number
+#		asm.file_version = build_number
+#		asm.custom_attributes :AssemblyInformationalVersion => "#{asm_version}", :ComVisibleAttribute => false
+#		asm.copyright = "Copyright 2009-2014 StormId. All rights reserved."
+#		asm.output_file = 'CommonAssemblyInfo.cs'
+#		asm.namespaces "System", "System.Reflection", "System.Runtime.InteropServices", "System.Security"
+#	end
 end
 
 namespace :bundler do
@@ -94,33 +94,33 @@ desc "Runs a Release build, packages"
 task :publish => ['release', 'albacore:package']do
 end
 
-def get_commit_hash_and_date
-	begin
-		commit = `git log -1 --pretty=format:%H`
-		git_date = `git log -1 --date=iso --pretty=format:%ad`
-		branch =  `git rev-parse --abbrev-ref HEAD`
-		commit_date = DateTime.parse( git_date ).strftime("%Y-%m-%d %H%M%S")
-	rescue
-		commit = ENV["BUILD_VCS_NUMBER"]
-	end
+#def get_commit_hash_and_date
+#	begin
+#		commit = `git log -1 --pretty=format:%H`
+#		git_date = `git log -1 --date=iso --pretty=format:%ad`
+#		branch =  `git rev-parse --abbrev-ref HEAD`
+#		commit_date = DateTime.parse( git_date ).strftime("%Y-%m-%d %H%M%S")
+#	rescue
+#		commit = ENV["BUILD_VCS_NUMBER"]
+#	end
+#
+#	[commit, commit_date, branch]
+#end
 
-	[commit, commit_date, branch]
-end
-
-def get_versions
-	commit_data = get_commit_hash_and_date
-	puts commit_data
-	commit = commit_data[0]
-	commit_date = commit_data[1]
-	tc_build_number = ENV["BUILD_NUMBER"].nil? ? Date.today.strftime('%y%j') : ENV["BUILD_NUMBER"]
-	build_number = BUILD_NUMBER_BASE + "." + tc_build_number
-	asm_version = BUILD_NUMBER_BASE + "." + tc_build_number
-	
-	if ( BUILD_TARGET == :debug )
-		puts "Branch name: #{ENV["BRANCHNAME"]}"
-		branch = commit_data[2].nil? ? ENV["BRANCHNAME"] : commit_data[2].gsub("\n","")
-		asm_version = asm_version + "-" + branch
-	end
-	
-	[commit, commit_date, tc_build_number, build_number, asm_version]
-end 
+#def get_versions
+#	commit_data = get_commit_hash_and_date
+#	puts commit_data
+#	commit = commit_data[0]
+#	commit_date = commit_data[1]
+#	tc_build_number = ENV["BUILD_NUMBER"].nil? ? Date.today.strftime('%y%j') : ENV["BUILD_NUMBER"]
+#	build_number = BUILD_NUMBER_BASE + "." + tc_build_number
+#	asm_version = BUILD_NUMBER_BASE + "." + tc_build_number
+#	
+#	if ( BUILD_TARGET == :debug )
+#		puts "Branch name: #{ENV["BRANCHNAME"]}"
+#		branch = commit_data[2].nil? ? ENV["BRANCHNAME"] : commit_data[2].gsub("\n","")
+#		asm_version = asm_version + "-" + branch
+#	end
+#	
+#	[commit, commit_date, tc_build_number, build_number, asm_version]
+#end 

@@ -1,4 +1,4 @@
-storm-googleanalytics-reporting
+storm-googleanalytics-reporting [![Build status](https://ci.appveyor.com/api/projects/status/dk5lm9y2a5c9kl9m?svg=true)](https://ci.appveyor.com/project/StormID/storm-googleanalytics-reporting)
 ==============
 
 An abstraction over the Google Analytics v3 Reporting API, providing a clean, fluent method of querying analytics data.

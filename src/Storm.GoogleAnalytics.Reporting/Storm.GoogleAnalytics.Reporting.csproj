@@ -103,9 +103,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\CommonAssemblyInfo.cs">
-      <Link>CommonAssemblyInfo.cs</Link>
-    </Compile>
     <Compile Include="Configuration\IGoogleAnalyticsRequestCompositeFilterConfigurer.cs" />
     <Compile Include="Configuration\IGoogleAnalyticsRequestConfiguration.cs" />
     <Compile Include="Configuration\IGoogleAnalyticsRequestConfigurer.cs" />

@@ -97,7 +97,7 @@ namespace Storm.GoogleAnalytics.Reporting.Configuration.Impl
         {
             if (keyFile != null && keyFile.Length > 0)
             {
-                WithServiceAccountCertificate(new X509Certificate2(keyFile, password, X509KeyStorageFlags.Exportable));
+				WithServiceAccountCertificate(new X509Certificate2(keyFile, password, X509KeyStorageFlags.Exportable | X509KeyStorageFlags.MachineKeySet));
             }
 
             return this;

@@ -1,3 +1,2 @@
-﻿Storm Google Analytics Reporting Library
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+﻿# Storm Google Analytics Reporting Library
 

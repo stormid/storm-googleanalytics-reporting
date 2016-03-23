@@ -42,7 +42,7 @@ namespace Storm.GoogleAnalytics.Reporting.Impl
             _serviceConfiguration = config.Build();
         }
 
-        
+
         public IGoogleAnalyticsResponse Query(
             Func<IGoogleAnalyticsRequestConfigurerProfileId, IGoogleAnalyticsRequestConfigurerProfileId> configurer)
         {
@@ -78,17 +78,21 @@ namespace Storm.GoogleAnalytics.Reporting.Impl
 
                     while (data.NextLink != null && data.Rows != null)
                     {
+                        if (requestConfig.MaxResults < 10000 && data.Rows.Count <= requestConfig.MaxResults)
+                        {
+                            break;
+                        }
                         gRequest.StartIndex = (gRequest.StartIndex ?? 1) + data.Rows.Count;
                         data = await gRequest.ExecuteAsync();
                         dt.Merge(ToDataTable(data));
                     }
-                    return new GoogleAnalyticsResponse(requestConfig, 
+                    return new GoogleAnalyticsResponse(requestConfig,
                         true,
                         new GoogleAnalyticsDataResponse(dt, data.ContainsSampledData.GetValueOrDefault(false)));
                 }
                 catch (Exception ex)
                 {
-                    return new GoogleAnalyticsResponse(requestConfig, 
+                    return new GoogleAnalyticsResponse(requestConfig,
                         false, errorResponse: new GoogleAnalyticsErrorResponse(ex.Message, ex));
                 }
             }

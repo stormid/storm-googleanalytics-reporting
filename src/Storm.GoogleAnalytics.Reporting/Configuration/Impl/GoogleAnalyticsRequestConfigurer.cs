@@ -141,7 +141,7 @@ namespace Storm.GoogleAnalytics.Reporting.Configuration.Impl
             Filter = filter;
             return this;
         }
-        
+
         public IGoogleAnalyticsRequestConfigurer SortBy(string field, bool isDescending = false)
         {
             if (string.IsNullOrWhiteSpace(Sort))
@@ -171,19 +171,28 @@ namespace Storm.GoogleAnalytics.Reporting.Configuration.Impl
 
         IGoogleAnalyticsRequestCustomConfigurer IGoogleAnalyticsRequestCustomConfigurer.Segment(string value)
         {
-            Segment = value;
+            if (!string.IsNullOrWhiteSpace(value))
+            {
+                Segment = value;
+            }
             return this;
         }
 
         IGoogleAnalyticsRequestCustomConfigurer IGoogleAnalyticsRequestCustomConfigurer.Filter(string value)
         {
-            Filter = value;
+            if (!string.IsNullOrWhiteSpace(value))
+            {
+                Filter = value;
+            }
             return this;
         }
 
         IGoogleAnalyticsRequestCustomConfigurer IGoogleAnalyticsRequestCustomConfigurer.Sort(string value)
         {
-            Sort = value;
+            if (!string.IsNullOrWhiteSpace(value))
+            {
+                Sort = value;
+            }
             return this;
         }
 

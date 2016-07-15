@@ -129,6 +129,8 @@
     <Compile Include="Core\Impl\GoogleAnalyticsErrorResponse.cs" />
     <Compile Include="Core\Impl\GoogleAnalyticsResponse.cs" />
     <Compile Include="Impl\GoogleAnalyticsService.cs" />
+    <Compile Include="Impl\RealTimeGoogleAnalyticsService.cs" />
+    <Compile Include="IRealTimeGoogleAnalyticsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

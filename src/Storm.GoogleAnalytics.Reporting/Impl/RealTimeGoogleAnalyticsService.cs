@@ -101,14 +101,14 @@ namespace Storm.GoogleAnalytics.Reporting.Impl
 
         private DataResource.RealtimeResource.GetRequest AnalyticsRequest(Google.Apis.Analytics.v3.AnalyticsService service, IGoogleAnalyticsRequestConfiguration requestConfig)
         {
-            var metrics = string.Join(",", requestConfig.Metrics.Select(GaMetadata.WithPrefix));
-            var dimensions = string.Join(",", requestConfig.Dimensions.Select(GaMetadata.WithPrefix));
+            var metrics = string.Join(",", requestConfig.Metrics.Select(GaMetadata.WithRealtimePrefix));
+            var dimensions = string.Join(",", requestConfig.Dimensions.Select(GaMetadata.WithRealtimePrefix));
 
             var gRequest = service.Data.Realtime.Get(
                 GaMetadata.WithPrefix(requestConfig.ProfileId),
                 metrics);
 
-            gRequest.Dimensions = dimensions;
+            gRequest.Dimensions = dimensions == "" ? null : dimensions;
             gRequest.MaxResults = requestConfig.MaxResults;
             gRequest.Filters = requestConfig.Filter;
             gRequest.Sort = requestConfig.Sort;
@@ -121,7 +121,7 @@ namespace Storm.GoogleAnalytics.Reporting.Impl
             var requestResultTable = new DataTable(name);
             if (response != null)
             {
-                requestResultTable.Columns.AddRange(response.ColumnHeaders.Select(x => new DataColumn(GaMetadata.RemovePrefix(x.Name), GetDataType(x))).ToArray());
+                requestResultTable.Columns.AddRange(response.ColumnHeaders.Select(x => new DataColumn(GaMetadata.RemoveRealtimePrefix(x.Name), GetDataType(x))).ToArray());
 
                 if (response.Rows != null)
                 {

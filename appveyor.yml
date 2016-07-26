@@ -1,0 +1,18 @@
+version: '{build}'
+os: Visual Studio 2015
+skip_branch_with_pr: true
+nuget:
+  disable_publish_on_pr: true
+cache: 
+- packages -> src\**\packages.config
+build_script:
+- ps: .\build.ps1 -Target "Default" -Configuration "Release"
+test: off
+artifacts:
+- path: artifacts\packages\*.nupkg
+deploy:
+- provider: Environment
+  name: NuGet.org (Storm)
+  on:
+    branch: master
+    APPVEYOR_REPO_TAG: true

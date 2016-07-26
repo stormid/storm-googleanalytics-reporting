@@ -4,7 +4,7 @@
     <id>$id$</id>
     <title>Storm Fluent Google Analytics v3 API Interface</title>
     <version>$version$</version>
-    <authors>Phil Oyston</authors>
+    <authors>Phil Oyston, David Miscampbell</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <projectUrl>http://stormid.github.io/storm-googleanalytics-reporting/</projectUrl>
     <summary>Provides a fluent interface to the GA v3 reporting API</summary>

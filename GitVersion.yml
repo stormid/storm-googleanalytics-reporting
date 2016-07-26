@@ -1,0 +1,8 @@
+mode: ContinuousDelivery
+branches:
+  master:
+    mode: ContinuousDeployment
+    tag: beta
+  (pull|pull\-requests|pr)[/-]: {}
+ignore:
+  sha: []

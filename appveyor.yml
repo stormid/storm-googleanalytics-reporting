@@ -14,5 +14,4 @@ deploy:
 - provider: Environment
   name: NuGet.org (Storm)
   on:
-    branch: master
     APPVEYOR_REPO_TAG: true

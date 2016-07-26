@@ -112,6 +112,7 @@ App_Data/*.mdf
 App_Data/*.ldf
 
 CommonAssemblyInfo.cs
+VersionAssemblyInfo.cs
 build/
 *.DotSettings
 *[Nn]crunch*

@@ -86,7 +86,7 @@ namespace Storm.GoogleAnalytics.Reporting.Impl
             {
                 return new Google.Apis.Analytics.v3.AnalyticsService(new BaseClientService.Initializer
                 {
-                    ApplicationName = string.Format("{0}{1}", _serviceConfiguration.ApplicationName, _serviceConfiguration.GZipEnabled ? " (gzip" : ""),
+                    ApplicationName = string.Format("{0}{1}", _serviceConfiguration.ApplicationName, _serviceConfiguration.GZipEnabled ? " (gzip)" : ""),
                     GZipEnabled = _serviceConfiguration.GZipEnabled,
                     DefaultExponentialBackOffPolicy = ExponentialBackOffPolicy.Exception,
                     HttpClientInitializer = new ServiceAccountCredential(
